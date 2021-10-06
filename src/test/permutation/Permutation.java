@@ -14,6 +14,10 @@ public class Permutation {
         Arrays.fill(visited, false);
         permutation(0);
 
+        System.out.println("==========");
+
+        nPrSwap(0);
+
     }
 
     public static void permutation(int idx) {
@@ -32,4 +36,25 @@ public class Permutation {
             visited[i] = false;
         }
     }
+
+    public static void nPrSwap(int d) { // d: depth
+        if(d == R) {
+            System.out.println(Arrays.toString(list));
+            return;
+        }
+        for (int i = d; i < list.length; i++) {
+            swap(d,i);
+            nPrSwap(d+1);
+            swap(d,i);
+        }
+    }
+
+    public static void swap(int a, int b){
+        int temp = list[a];
+        list[a] = list[b];
+        list[b] = temp;
+    }
+
 }
+
+
